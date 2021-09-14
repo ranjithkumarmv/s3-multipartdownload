@@ -1,0 +1,11 @@
+{
+  "name": "s3-multipartdownload",
+  "version": "1.0.0",
+  "description": "s3-multipartdownload",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.988.0",
+    "dotenv": "^10.0.0",
+    "merge-files": "^0.1.2"
+  }
+}
