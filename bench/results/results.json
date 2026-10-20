@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-20T16:30:19.232Z",
+  "node": "v22.16.0",
+  "platform": "darwin arm64 (Apple M1, 8 cores)",
+  "partSizeMB": 8,
+  "runs": 3,
+  "mode": "simulated",
+  "network": {
+    "perConnMBps": 40,
+    "aggregateMBps": 400,
+    "latencyMs": 20
+  },
+  "cases": [
+    {
+      "key": "object-100MB.bin",
+      "sizeMB": 100,
+      "results": [
+        {
+          "strategy": "single",
+          "label": "Single GetObject (baseline)",
+          "parallel": 1,
+          "medianSeconds": 2.908017625,
+          "throughputMBps": 34.38768704161482,
+          "peakRssMB": 134.296875,
+          "checksumVerified": true,
+          "speedup": 1
+        },
+        {
+          "strategy": "parallel-4",
+          "label": "s3-multipartdownload ×4",
+          "parallel": 4,
+          "medianSeconds": 1.011015542,
+          "throughputMBps": 98.91044780793291,
+          "peakRssMB": 116.53125,
+          "checksumVerified": true,
+          "speedup": 2.876333255221115
+        },
+        {
+          "strategy": "parallel-8",
+          "label": "s3-multipartdownload ×8",
+          "parallel": 8,
+          "medianSeconds": 0.5524730419999999,
+          "throughputMBps": 181.00430681285624,
+          "peakRssMB": 113.078125,
+          "checksumVerified": true,
+          "speedup": 5.263637144126935
+        },
+        {
+          "strategy": "parallel-16",
+          "label": "s3-multipartdownload ×16",
+          "parallel": 16,
+          "medianSeconds": 0.405325417,
+          "throughputMBps": 246.71534477197613,
+          "peakRssMB": 120,
+          "checksumVerified": true,
+          "speedup": 7.174525709548582
+        }
+      ]
+    },
+    {
+      "key": "object-500MB.bin",
+      "sizeMB": 500,
+      "results": [
+        {
+          "strategy": "single",
+          "label": "Single GetObject (baseline)",
+          "parallel": 1,
+          "medianSeconds": 14.290694084,
+          "throughputMBps": 34.98780374564206,
+          "peakRssMB": 134.15625,
+          "checksumVerified": true,
+          "speedup": 1
+        },
+        {
+          "strategy": "parallel-4",
+          "label": "s3-multipartdownload ×4",
+          "parallel": 4,
+          "medianSeconds": 4.476259542,
+          "throughputMBps": 111.70040416749364,
+          "peakRssMB": 132.78125,
+          "checksumVerified": true,
+          "speedup": 3.1925526100336206
+        },
+        {
+          "strategy": "parallel-8",
+          "label": "s3-multipartdownload ×8",
+          "parallel": 8,
+          "medianSeconds": 2.487548042,
+          "throughputMBps": 201.00114311681705,
+          "peakRssMB": 129.9375,
+          "checksumVerified": true,
+          "speedup": 5.74489169363347
+        },
+        {
+          "strategy": "parallel-16",
+          "label": "s3-multipartdownload ×16",
+          "parallel": 16,
+          "medianSeconds": 2.011870792,
+          "throughputMBps": 248.52490626545168,
+          "peakRssMB": 127.453125,
+          "checksumVerified": true,
+          "speedup": 7.10318681538869
+        }
+      ]
+    }
+  ]
+}

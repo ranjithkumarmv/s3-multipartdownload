@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 306" role="img" aria-label="Download throughput by strategy">
+  <style>
+    .bg { fill: #fcfcfb }
+    .title { font: 600 18px system-ui, -apple-system, Segoe UI, sans-serif; fill: #0b0b0b }
+    .sub, .axis, .muted { font: 12px system-ui, -apple-system, Segoe UI, sans-serif; fill: #52514e }
+    .label, .value { font: 13px system-ui, -apple-system, Segoe UI, sans-serif; fill: #0b0b0b }
+    .value { font-weight: 600 }
+    .muted { font-weight: 400 }
+    .grid { stroke: #e4e3df; stroke-width: 1 }
+    .bar { fill: #2a78d6 }
+    .bar.base { fill: #a3a29b }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #1a1a19 }
+      .title, .label, .value { fill: #f0efec }
+      .sub, .axis, .muted { fill: #c3c2b7 }
+      .grid { stroke: #3a3a37 }
+      .bar { fill: #3987e5 }
+      .bar.base { fill: #6f6e68 }
+    }
+  </style>
+  <rect class="bg" width="760" height="306" rx="12"/>
+  <text class="title" x="24" y="34">Download throughput (higher is better)</text>
+  <text class="sub" x="24" y="56">500 MB object · simulated S3: 40 MB/s per connection, 400 MB/s total</text>
+    <line class="grid" x1="250" x2="250" y1="70" y2="262"/>
+    <text class="axis" x="250" y="280" text-anchor="middle">0</text>
+    <line class="grid" x1="406.925921776" x2="406.925921776" y1="70" y2="262"/>
+    <text class="axis" x="406.925921776" y="280" text-anchor="middle">100</text>
+    <line class="grid" x1="563.851843552" x2="563.851843552" y1="70" y2="262"/>
+    <text class="axis" x="563.851843552" y="280" text-anchor="middle">200</text>
+    <text class="label" x="238" y="105" text-anchor="end">Single GetObject (baseline)</text>
+    <path class="bar base" d="M250,86 h50.904933537026665 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-50.904933537026665 z"><title>Single GetObject (baseline): 35.0 MB/s, 14.29 s</title></path>
+    <text class="value" x="312.90493353702664" y="105">35 MB/s <tspan class="muted"></tspan></text>
+    <text class="label" x="238" y="151" text-anchor="end">s3-multipartdownload ×4</text>
+    <path class="bar" d="M250,132 h171.2868888673569 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-171.2868888673569 z"><title>s3-multipartdownload ×4: 111.7 MB/s, 4.48 s</title></path>
+    <text class="value" x="433.2868888673569" y="151">112 MB/s <tspan class="muted">3.2×</tspan></text>
+    <text class="label" x="238" y="197" text-anchor="end">s3-multipartdownload ×8</text>
+    <path class="bar" d="M250,178 h311.4228966163621 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-311.4228966163621 z"><title>s3-multipartdownload ×8: 201.0 MB/s, 2.49 s</title></path>
+    <text class="value" x="573.4228966163621" y="197">201 MB/s <tspan class="muted">5.7×</tspan></text>
+    <text class="label" x="238" y="243" text-anchor="end">s3-multipartdownload ×16</text>
+    <path class="bar" d="M250,224 h386 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-386 z"><title>s3-multipartdownload ×16: 248.5 MB/s, 2.01 s</title></path>
+    <text class="value" x="648" y="243">249 MB/s <tspan class="muted">7.1×</tspan></text>
+  <text class="axis" x="445" y="300" text-anchor="middle">MB/s · median of 3 runs</text>
+</svg>

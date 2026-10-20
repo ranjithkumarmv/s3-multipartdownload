@@ -1,22 +1,52 @@
 {
   "name": "s3-multipartdownload",
   "version": "2.0.0",
-  "description": "Download large S3 objects fast by fetching byte ranges in parallel and streaming them to disk (AWS SDK v3)",
+  "description": "Fast parallel S3 downloads for Node.js: split large Amazon S3 objects into byte ranges, download them concurrently with AWS SDK v3 and stream to disk with retries, progress and cancellation.",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
-    "test": "node --test \"test/**/*.test.js\""
+    "test": "node --test \"test/**/*.test.js\"",
+    "bench": "node bench/benchmark.js"
   },
   "keywords": [
     "s3",
     "aws",
-    "download",
+    "aws-s3",
+    "amazon-s3",
+    "aws-sdk",
+    "aws-sdk-v3",
+    "client-s3",
+    "s3-download",
+    "parallel-download",
+    "multipart-download",
     "multipart",
-    "parallel",
-    "range"
+    "range-request",
+    "byte-range",
+    "getobject",
+    "concurrent",
+    "download-manager",
+    "transfer-manager",
+    "large-files",
+    "stream",
+    "fast",
+    "minio",
+    "cloudflare-r2",
+    "nodejs",
+    "typescript"
   ],
+  "homepage": "https://github.com/ranjithkumarmv/s3-multipartdownload#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranjithkumarmv/s3-multipartdownload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ranjithkumarmv/s3-multipartdownload/issues"
+  },
+  "author": "ranjithkumarmv",
   "license": "MIT",
   "engines": {
     "node": ">=20.3.0"
