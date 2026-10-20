@@ -37,6 +37,16 @@ const filePath = await download(
 // filePath === 'downloads/big.bin'
 ```
 
+## Command line
+
+```bash
+npx s3-multipartdownload s3://my-bucket/path/to/big.bin [destination] [-p 8] [-s 8MiB] [--region us-east-1] [--profile name] [--endpoint url --path-style] [--no-sign-request]
+```
+
+- Downloads one object (not a prefix). Destination: omitted → `./<basename>`; existing dir or trailing `/` → inside it; otherwise the exact file path.
+- Uses the standard AWS credential chain, like the AWS CLI. Prints the saved path on stdout, progress on stderr.
+- Exit codes: 0 ok, 1 download failed, 2 bad arguments, 130 cancelled (Ctrl-C removes the partial file).
+
 ## API
 
 - `download(s3Client, s3Params, options?) => Promise<string>`: resolves to the output file path; rejects on failure after removing the partial temp file.

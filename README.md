@@ -71,6 +71,50 @@ const file: string = await download(new S3Client({}), { Bucket: 'my-bucket', Key
 ```
 </details>
 
+## Command line
+
+Run it straight from npm, with nothing to install first:
+
+```bash
+npx s3-multipartdownload s3://my-bucket/datasets/big-file.parquet
+```
+
+It uses the same credentials as the AWS CLI (environment variables, `~/.aws/config`, SSO, instance roles). It prints the saved path on stdout and shows progress on stderr. Ctrl-C cancels the download and removes the partial file.
+
+```bash
+# Into a directory, with 16 parallel ranges
+npx s3-multipartdownload s3://my-bucket/video.mp4 ./downloads/ -p 16
+
+# To a specific file name, with a named profile
+npx s3-multipartdownload s3://my-bucket/logs.tar.gz ./backup.tar.gz --profile prod
+
+# Public bucket, no credentials
+npx s3-multipartdownload s3://noaa-goes16/index.html --no-sign-request --region us-east-1
+
+# MinIO or another S3-compatible service
+npx s3-multipartdownload s3://assets/build.tar.gz --endpoint http://localhost:9000 --path-style
+```
+
+| Flag | Default | Description |
+| --- | --- | --- |
+| `[destination]` | `./<key basename>` | An existing directory or a path ending in `/` saves inside it. Anything else is the output file path |
+| `-p, --parallel <n>` | `8` | Concurrent range requests |
+| `-s, --part-size <size>` | `8MiB` | Bytes per range, such as `16MiB`, `16M` or `16777216` |
+| `-r, --retries <n>` | `3` | Extra attempts per part on network or 5xx errors |
+| `--region <region>` | from env/profile | AWS region |
+| `--profile <name>` | | Named profile from `~/.aws/config` |
+| `--endpoint <url>` | | S3-compatible endpoint (MinIO, R2, Wasabi…) |
+| `--path-style` | | Path-style URLs, needed by MinIO and some others |
+| `--no-sign-request` | | Anonymous access for public buckets |
+| `--version-id <id>` | | Download a specific object version |
+| `--request-payer` | | Acknowledge requester-pays charges |
+| `-q, --quiet` | | No progress output |
+
+Exit codes: `0` success, `1` download failed, `2` bad arguments, `130` cancelled.
+
+> [!TIP]
+> Downloading often? Install it once with `npm install -g s3-multipartdownload`. The command name stays `s3-multipartdownload`.
+
 ## Usage recipes
 
 ### Progress bar
@@ -211,7 +255,7 @@ Each part is one `GET` request. A 1 GB object at 8 MiB parts is 128 requests, wh
 <details>
 <summary><b>How is this different from <code>aws s3 cp</code>?</b></summary>
 
-The AWS CLI also downloads in parallel. Use it for shell scripts. Use this package when you need parallel downloads inside a Node.js app, Lambda or worker with no CLI dependency, with your own client configuration and progress and cancellation hooks.
+The AWS CLI also downloads in parallel, and you can tune it with `aws configure set default.s3.max_concurrent_requests 16`. Use this package when you need parallel downloads inside a Node.js app, Lambda or worker with no CLI dependency, with your own client configuration and progress and cancellation hooks. The `npx` command is handy when Node is installed but the AWS CLI isn't.
 </details>
 
 <details>
