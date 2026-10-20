@@ -115,6 +115,18 @@ Exit codes: `0` success, `1` download failed, `2` bad arguments, `130` cancelled
 > [!TIP]
 > Downloading often? Install it once with `npm install -g s3-multipartdownload`. The command name stays `s3-multipartdownload`.
 
+### No Node.js? Use the standalone binary
+
+The [Rust port](https://github.com/ranjithkumarmv/s3-multipartdownload-rs) has the same command, flags and behaviour as a single static binary for Linux, macOS and Windows:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ranjithkumarmv/s3-multipartdownload-rs/main/install.sh | sh
+# or, with Rust installed:
+cargo binstall s3-multipartdownload
+```
+
+It has the same throughput with about a third of the memory ([benchmarks](https://github.com/ranjithkumarmv/s3-multipartdownload-rs#benchmarks)).
+
 ## Usage recipes
 
 ### Progress bar

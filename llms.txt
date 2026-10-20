@@ -76,3 +76,4 @@ npx s3-multipartdownload s3://my-bucket/path/to/big.bin [destination] [-p 8] [-s
 - [Benchmark results](https://github.com/ranjithkumarmv/s3-multipartdownload/blob/main/bench/results/RESULTS.md): simulated S3, up to 7.1× faster than a single GetObject on 500 MB
 - [Blog post (Markdown)](https://ranjithkumarmv.com/blog/parallel-s3-downloads-nodejs.md): background, design and benchmarks
 - [npm](https://www.npmjs.com/package/s3-multipartdownload)
+- [Rust port](https://github.com/ranjithkumarmv/s3-multipartdownload-rs): same CLI as a standalone binary, plus a Rust crate (`s3-multipartdownload`)
