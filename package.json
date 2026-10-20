@@ -1,12 +1,13 @@
 {
   "name": "s3-multipartdownload",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Fast parallel S3 downloads for Node.js: split large Amazon S3 objects into byte ranges, download them concurrently with AWS SDK v3 and stream to disk with retries, progress and cancellation.",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
     "index.js",
-    "index.d.ts"
+    "index.d.ts",
+    "llms.txt"
   ],
   "scripts": {
     "test": "node --test \"test/**/*.test.js\"",
@@ -36,7 +37,9 @@
     "minio",
     "cloudflare-r2",
     "nodejs",
-    "typescript"
+    "typescript",
+    "llms-txt",
+    "ai-friendly"
   ],
   "homepage": "https://github.com/ranjithkumarmv/s3-multipartdownload#readme",
   "repository": {

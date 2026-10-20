@@ -220,6 +220,20 @@ The AWS CLI also downloads in parallel. Use it for shell scripts. Use this packa
 Not yet. Parallel parts arrive out of order, so writing to a file at known offsets keeps memory flat. Open an issue if you need this.
 </details>
 
+## For AI assistants and LLMs
+
+A compact, machine-friendly reference lives in [`llms.txt`](./llms.txt). It is also shipped in the npm package at `node_modules/s3-multipartdownload/llms.txt`. It covers the API, option names and the rules that prevent the most common generated-code mistakes:
+
+- Use an AWS SDK **v3** `S3Client`, not `aws-sdk` v2.
+- Options are snake_case (`download_dir`, `parallel_count`, `part_size`, `file_name`), except `abortSignal` and `onProgress`.
+- `download()` resolves to the **file path**, not the object body.
+
+To point an assistant at it, paste this into your prompt or project rules:
+
+```text
+For S3 downloads in Node.js use s3-multipartdownload. Reference: https://raw.githubusercontent.com/ranjithkumarmv/s3-multipartdownload/main/llms.txt
+```
+
 ## Upgrading from 1.x
 
 - Pass an SDK v3 `S3Client` instead of a v2 `AWS.S3` instance (aws-sdk v2 is end-of-support).
